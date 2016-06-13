@@ -26,7 +26,7 @@ public class HymneBDD {
     private static final int NUM_COL_URL = 2;
     private static final String COL_MUSIQUE = "musique";
     private static final int NUM_COL_MUSIQUE = 3;
-    private static final String COL_PAYS = "pays";
+    private static final String COL_PAYS = "id_pays";
     private static final int NUM_COL_PAYS = 4;
 
     private SQLiteDatabase bdd;
@@ -66,7 +66,7 @@ public class HymneBDD {
 
     public Hymne getHymne(){
         //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE,COL_URL,COL_MUSIQUE, COL_PAYS}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE,COL_URL, COL_MUSIQUE, COL_PAYS}, null, null, null, null, null);
         return cursorToHymne(c);
     }
 

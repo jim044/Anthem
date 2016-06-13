@@ -21,8 +21,8 @@ public class DrapeauBDD {
     private static final int NUM_COL_ID = 0;
     private static final String COL_DESCRIPTION = "description";
     private static final int NUM_COL_DESCRIPTION = 1;
-    private static final String COL_PAYS = "pays";
-    private static final int NUM_COL_PAYS = 1;
+    private static final String COL_PAYS = "id_pays";
+    private static final int NUM_COL_PAYS = 2;
 
     private SQLiteDatabase bdd;
 

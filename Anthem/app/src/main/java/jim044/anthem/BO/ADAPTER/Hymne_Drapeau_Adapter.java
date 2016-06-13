@@ -1,16 +1,21 @@
 package jim044.anthem.BO.ADAPTER;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.util.List;
 
 import jim044.anthem.BO.Drapeau;
@@ -66,6 +71,15 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         //(2) : Récupération des TextView de notre layout
         TextView tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
         TextView tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
+
+        ImageView imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
+        imgViewDrapeau.setImageResource(R.drawable.france_drapeau);
+        //File imgFile = new  File("./res/DRAPEAUX/FRANCE - DRAPEAU.png");
+
+        //if(imgFile.exists()){
+        //    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+        //    imgViewDrapeau.setImageBitmap(myBitmap);
+        //}
 
         //(3) : Renseignement des valeurs
         tv_Hymne.setText(listeHymne.get(position).getParole());
