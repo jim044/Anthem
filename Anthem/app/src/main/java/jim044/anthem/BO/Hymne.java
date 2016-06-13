@@ -7,7 +7,21 @@ public class Hymne {
 
     private int id;
     private String parole;
+    private String url;
     private String musique;
+
+    public Hymne(int id, String parole, String url, String musique) {
+        this.id = id;
+        this.parole = parole;
+        this.url = url;
+        this.musique = musique;
+    }
+
+    public Hymne(String parole, String url, String musique) {
+        this.parole = parole;
+        this.url = url;
+        this.musique = musique;
+    }
 
     public Hymne(int id, String parole, String musique) {
         this.id = id;
@@ -18,6 +32,14 @@ public class Hymne {
     public Hymne()
     {
 
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
     public int getId() {
         return id;
