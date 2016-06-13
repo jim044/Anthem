@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import jim044.anthem.BO.Drapeau;
@@ -28,8 +30,9 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
     //Un mécanisme pour gérer l'affichage graphique depuis un layout XML
     private LayoutInflater mInflater;
 
-    public Hymne_Drapeau_Adapter(Context mContext, List<Hymne> listeHymne) {
+    public Hymne_Drapeau_Adapter(Context mContext, List<Hymne> listeHymne, List<Drapeau> listeDrapeau) {
         this.listeHymne = listeHymne;
+        this.listDrapeau = listeDrapeau;
         this.mContext = mContext;
         mInflater = LayoutInflater.from(mContext);
     }
@@ -62,9 +65,11 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
 
         //(2) : Récupération des TextView de notre layout
         TextView tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
+        TextView tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
 
         //(3) : Renseignement des valeurs
         tv_Hymne.setText(listeHymne.get(position).getParole());
+        tv_Drapeau.setText(listDrapeau.get(position).getDescription());
 
         //(4) Changement de la couleur du fond de notre item
         //if (mListP.get(position).genre == Personne.MASCULIN) {

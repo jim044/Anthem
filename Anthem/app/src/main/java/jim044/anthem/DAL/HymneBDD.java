@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import jim044.anthem.BO.Drapeau;
 import jim044.anthem.BO.Hymne;
+import jim044.anthem.BO.Pays;
 
 /**
  * Created by user on 12/06/2016.
@@ -25,6 +26,8 @@ public class HymneBDD {
     private static final int NUM_COL_URL = 2;
     private static final String COL_MUSIQUE = "musique";
     private static final int NUM_COL_MUSIQUE = 3;
+    private static final String COL_PAYS = "pays";
+    private static final int NUM_COL_PAYS = 4;
 
     private SQLiteDatabase bdd;
 
@@ -56,13 +59,14 @@ public class HymneBDD {
         values.put(COL_PAROLE, hymne.getParole());
         values.put(COL_URL, hymne.getUrl());
         values.put(COL_MUSIQUE, hymne.getMusique());
+        values.put(COL_PAYS, hymne.getPays().getId());
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_HYMNE, null, values);
     }
 
     public Hymne getHymne(){
         //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE,COL_URL,COL_MUSIQUE}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE,COL_URL,COL_MUSIQUE, COL_PAYS}, null, null, null, null, null);
         return cursorToHymne(c);
     }
 
@@ -81,6 +85,7 @@ public class HymneBDD {
         hymne.setParole(c.getString(NUM_COL_PAROLE));
         hymne.setUrl(c.getString(NUM_COL_URL));
         hymne.setMusique(c.getString(NUM_COL_MUSIQUE));
+        hymne.setPays(new Pays(c.getInt(NUM_COL_PAYS)));
         //On ferme le cursor
         c.close();
 

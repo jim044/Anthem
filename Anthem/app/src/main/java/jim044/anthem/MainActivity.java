@@ -23,24 +23,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HymneBDD hymneBDD = new HymneBDD(this);
-        Hymne hymne = new Hymne("Test", "../res/HYMNES/FRANCE - HYMNE.mp3", "Test");
-        hymneBDD.open();
-        hymneBDD.insertHymne(hymne);
 
-        ListView listViewHymne = (ListView) findViewById(R.id.listViewHymne);
+
+        //ListView listViewHymne = (ListView) findViewById(R.id.listViewHymne);
 
         //Récupération de la liste des personnes
-        ArrayList<Hymne> listHymne = new ArrayList<Hymne>();
-        listHymne.add(hymne);
+        //ArrayList<Hymne> listHymne = new ArrayList<Hymne>();
+        //listHymne.add(hymne);
+
+        //ArrayList<Drapeau> listDrapeau = new ArrayList<Drapeau>();
+        //listDrapeau.add(drapeau);
 
         //Création et initialisation de l'Adapter pour les personnes
-        Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne);
+        //Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
 
         //Récupération du composant ListView
-        ListView listHymneBis = (ListView)findViewById(R.id.listViewHymne);
+        //ListView listHymneBis = (ListView)findViewById(R.id.listViewHymne);
 
         //Initialisation de la liste avec les données
-        listHymneBis.setAdapter(adapter);
+        //listHymneBis.setAdapter(adapter);
     }
+
+    public void insertionDonnees()
+    {
+        HymneBDD hymneBDD = new HymneBDD(this);
+        hymneBDD.open();
+
+        Hymne hymne = new Hymne("Test", "../res/HYMNES/FRANCE - HYMNE.mp3", "Test");
+        hymneBDD.insertHymne(hymne);
+
+        Drapeau drapeau = new Drapeau("JAUNE BLEU ORANGE");
+    }
+
 }

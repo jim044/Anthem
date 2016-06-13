@@ -14,9 +14,9 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
     private static final String TABLE_PERSONNE = "table_personne";
 
     private static final String CREATE_TABLE_DRAPEAU = "CREATE TABLE " + TABLE_DRAPEAU + " ("
-            + "id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR NOT NULL);";
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR NOT NULL, ID_PAYS INTEGER NOT NULL);";
     private static final String CREATE_TABLE_HYMNE = "CREATE TABLE " + TABLE_HYMNE + " ("
-            + "id INTEGER PRIMARY KEY AUTOINCREMENT, parole VARCHAR NOT NULL, musique VARCHAR NOT NULL);";
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT, parole VARCHAR NOT NULL, musique VARCHAR NOT NULL, ID_PAYS INTEGER NOT NULL);";
     private static final String CREATE_TABLE_PERSONNE = "CREATE TABLE " + TABLE_PERSONNE + " ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR NOT NULL, prenom VARCHAR NOT NULL"
             + ", dateNaissance DATE NOT NULL, email STRING NOT NULL, adresse STRING NOT NULL);";

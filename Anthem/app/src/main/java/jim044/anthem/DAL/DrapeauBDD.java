@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import jim044.anthem.BO.Drapeau;
+import jim044.anthem.BO.Pays;
 
 /**
  * Created by user on 12/06/2016.
@@ -20,6 +21,8 @@ public class DrapeauBDD {
     private static final int NUM_COL_ID = 0;
     private static final String COL_DESCRIPTION = "description";
     private static final int NUM_COL_DESCRIPTION = 1;
+    private static final String COL_PAYS = "pays";
+    private static final int NUM_COL_PAYS = 1;
 
     private SQLiteDatabase bdd;
 
@@ -49,13 +52,14 @@ public class DrapeauBDD {
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_DESCRIPTION, drapeau.getDescription());
+        values.put(COL_PAYS, drapeau.getPays().getId());
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_DRAPEAU, null, values);
     }
 
     public Drapeau getDrapeau(){
         //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_DRAPEAU, new String[] {COL_ID, COL_DESCRIPTION}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_DRAPEAU, new String[] {COL_ID, COL_DESCRIPTION, COL_PAYS}, null, null, null, null, null);
         return cursorToDrapeau(c);
     }
 
@@ -72,6 +76,7 @@ public class DrapeauBDD {
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         drapeau.setId(c.getInt(NUM_COL_ID));
         drapeau.setDescription(c.getString(NUM_COL_DESCRIPTION));
+        drapeau.setPays(new Pays(c.getInt(NUM_COL_PAYS)));
         //On ferme le cursor
         c.close();
 

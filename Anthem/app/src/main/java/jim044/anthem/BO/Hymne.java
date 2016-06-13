@@ -9,6 +9,22 @@ public class Hymne {
     private String parole;
     private String url;
     private String musique;
+    private Pays pays;
+
+    public Hymne(String parole, String url, String musique, Pays pays) {
+        this.parole = parole;
+        this.url = url;
+        this.musique = musique;
+        this.pays = pays;
+    }
+
+    public Pays getPays() {
+        return pays;
+    }
+
+    public void setPays(Pays pays) {
+        this.pays = pays;
+    }
 
     public Hymne(int id, String parole, String url, String musique) {
         this.id = id;

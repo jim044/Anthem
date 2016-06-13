@@ -9,4 +9,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Hymnes"
         android:id="@+id/textViewHymne" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Drapeau"
+        android:id="@+id/textViewDrapeau" />
 </LinearLayout>
