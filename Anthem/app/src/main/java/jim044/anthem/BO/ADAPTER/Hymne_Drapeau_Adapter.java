@@ -1,6 +1,7 @@
 package jim044.anthem.BO.ADAPTER;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import jim044.anthem.BO.Drapeau;
@@ -69,7 +72,17 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
             layoutItem = (LinearLayout) convertView;
         }
 
-        int id = mContext.getResources().getIdentifier("france_drapeau","drawable", mContext.getPackageName());
+        AssetManager manager = mContext.getAssets();
+
+        InputStream open = null;
+        try {
+            open = manager.open("france_drapeau.png");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(open);
+
+        //int id = mContext.getResources().getIdentifier("france_drapeau","drawable", mContext.getPackageName());
 
         //Bitmap bitDrapeau = BitmapFactory.decodeResource(mContext.getResources(), mContext.getResources().getIdentifier("france_drapeau","drawable",  mContext.getPackageName()));
 
@@ -78,24 +91,11 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         TextView tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
 
         ImageView imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
-        imgViewDrapeau.setImageResource(id);
-        //File imgFile = new  File("./res/DRAPEAUX/FRANCE - DRAPEAU.png");
-
-        //if(imgFile.exists()){
-        //    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-        //    imgViewDrapeau.setImageBitmap(myBitmap);
-        //}
+        imgViewDrapeau.setImageBitmap(bitmap);
 
         //(3) : Renseignement des valeurs
         tv_Hymne.setText(listeHymne.get(position).getParole());
         tv_Drapeau.setText(listDrapeau.get(position).getDescription());
-
-        //(4) Changement de la couleur du fond de notre item
-        //if (mListP.get(position).genre == Personne.MASCULIN) {
-         //   layoutItem.setBackgroundColor(Color.BLUE);
-        //} else {
-        //    layoutItem.setBackgroundColor(Color.MAGENTA);
-        //}
 
         //On retourne l'item créé.
         return layoutItem;
