@@ -60,6 +60,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LinearLayout layoutItem;
+
         //(1) : Réutilisation des layouts
         if (convertView == null) {
             //Initialisation de notre item à partir du  layout XML "personne_layout.xml"
@@ -68,12 +69,16 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
             layoutItem = (LinearLayout) convertView;
         }
 
+        int id = mContext.getResources().getIdentifier("france_drapeau","drawable", mContext.getPackageName());
+
+        //Bitmap bitDrapeau = BitmapFactory.decodeResource(mContext.getResources(), mContext.getResources().getIdentifier("france_drapeau","drawable",  mContext.getPackageName()));
+
         //(2) : Récupération des TextView de notre layout
         TextView tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
         TextView tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
 
         ImageView imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
-        imgViewDrapeau.setImageResource(R.drawable.france_drapeau);
+        imgViewDrapeau.setImageResource(id);
         //File imgFile = new  File("./res/DRAPEAUX/FRANCE - DRAPEAU.png");
 
         //if(imgFile.exists()){
