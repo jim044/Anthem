@@ -1,5 +1,7 @@
 package jim044.anthem;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +25,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Pays unPays;
 
-        Pays unPays = new Pays(1, "FRANCE");
+        unPays = new Pays(1, "FRANCE");
         Hymne unHymne = new Hymne("Test", "../res/HYMNES/FRANCE - HYMNE.mp3", "Test", unPays);
 
         HymneBDD hymneBDD = new HymneBDD(this);
+
+        try{
+            SQLiteDatabase checkDB = null;
+            checkDB = SQLiteDatabase.openDatabase("/data/data/package/databases/anthem.db", null, SQLiteDatabase.OPEN_READONLY);
+
+            System.out.println("La base existe");
+        }catch(SQLiteException e){
+            System.out.println("La base n'existe pas");
+        }
+
         hymneBDD.open();
         hymneBDD.insertHymne(unHymne);
 

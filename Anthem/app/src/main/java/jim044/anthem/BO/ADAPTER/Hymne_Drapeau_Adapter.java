@@ -63,6 +63,12 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LinearLayout layoutItem;
+        AssetManager manager;
+        InputStream open;
+        Bitmap bitmap;
+        TextView tv_Hymne;
+        TextView tv_Drapeau;
+        ImageView imgViewDrapeau;
 
         //(1) : Réutilisation des layouts
         if (convertView == null) {
@@ -72,32 +78,25 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
             layoutItem = (LinearLayout) convertView;
         }
 
-        AssetManager manager = mContext.getAssets();
+        manager = mContext.getAssets();
 
-        InputStream open = null;
+        open = null;
         try {
-            open = manager.open("france_drapeau.png");
+            open = manager.open(listeHymne.get(position).getPays().getNom().toLowerCase() + "_drapeau.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bitmap bitmap = BitmapFactory.decodeStream(open);
+        bitmap = BitmapFactory.decodeStream(open);
 
-        //int id = mContext.getResources().getIdentifier("france_drapeau","drawable", mContext.getPackageName());
+        tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
+        tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
 
-        //Bitmap bitDrapeau = BitmapFactory.decodeResource(mContext.getResources(), mContext.getResources().getIdentifier("france_drapeau","drawable",  mContext.getPackageName()));
-
-        //(2) : Récupération des TextView de notre layout
-        TextView tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
-        TextView tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
-
-        ImageView imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
+        imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
         imgViewDrapeau.setImageBitmap(bitmap);
 
-        //(3) : Renseignement des valeurs
         tv_Hymne.setText(listeHymne.get(position).getParole());
         tv_Drapeau.setText(listDrapeau.get(position).getDescription());
 
-        //On retourne l'item créé.
         return layoutItem;
     }
 }
