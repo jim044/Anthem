@@ -71,9 +71,10 @@ public class MainActivity extends AppCompatActivity {
         unHymne = new Hymne("Test","Test", unPays);
         unDrapeau = new Drapeau("JAUNE BLEU ORANGE",unPays);
 
+        drapeauBDD.insertDrapeau(unDrapeau);
         hymneBDD.insertHymne(unHymne);
         paysBDD.insertPays(unPays);
-        drapeauBDD.insertDrapeau(unDrapeau);
+
 
 
 

@@ -22,7 +22,7 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_DRAPEAU = "CREATE TABLE " + TABLE_DRAPEAU + " ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR NOT NULL, id_pays INTEGER NOT NULL);";
-    private static final String CREATE_TABLE_HYMNE = "CREATE TABLE " + TABLE_HYMNE + " ("
+    private static final String CREATE_TABLE_HYMNE = "CREATE TABLE " + TABLE_HYMNE + " ( "
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, parole VARCHAR NOT NULL, musique VARCHAR NOT NULL, id_pays INTEGER NOT NULL);";
     private static final String CREATE_TABLE_PERSONNE = "CREATE TABLE " + TABLE_PERSONNE + " ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR NOT NULL, prenom VARCHAR NOT NULL"
@@ -37,17 +37,17 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        try {
-            is = Context.getResources().getAssets().open("anthem.sql");
-            String[] statements = FileHelper.parseSqlFile(is);
+        //try {
+        //    is = Context.getResources().getAssets().open("anthem.sql");
+         //   String[] statements = FileHelper.parseSqlFile(is);
 
-            for (String statement : statements) {
-                db.execSQL(statement);   //execution des requêtes
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.i("BDD", "Création ou connexion fichié échouée");
-        }
+//            for (String statement : statements) {
+  //              db.execSQL(statement);   //execution des requêtes
+    //        }
+      //  } catch (IOException e) {
+        //    e.printStackTrace();
+         //   Log.i("BDD", "Création ou connexion fichié échouée");
+        //}
         db.execSQL(CREATE_TABLE_DRAPEAU);
         db.execSQL(CREATE_TABLE_HYMNE);
         db.execSQL(CREATE_TABLE_PERSONNE);
