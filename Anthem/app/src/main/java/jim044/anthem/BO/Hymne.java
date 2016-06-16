@@ -24,10 +24,11 @@ public class Hymne {
         this.pays = pays;
     }
 
-    public Hymne(int id, String parole, String url, String musique) {
+    public Hymne(int id, String parole, String musique, Pays pays) {
         this.id = id;
         this.parole = parole;
         this.musique = musique;
+        this.pays = pays;
     }
 
     public Hymne(String parole, String url, String musique) {

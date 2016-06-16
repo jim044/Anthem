@@ -81,22 +81,26 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         manager = mContext.getAssets();
 
         open = null;
-        try {
-            open = manager.open(listeHymne.get(position).getPays().getNom().toLowerCase() + "_drapeau.png");
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        if(!listeHymne.get(position).getPays().getNom().isEmpty()) {
+            try {
+                open = manager.open(listeHymne.get(position).getPays().getNom().toLowerCase() + "_drapeau.png");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            bitmap = BitmapFactory.decodeStream(open);
+
+            tv_Hymne = (TextView) layoutItem.findViewById(R.id.textViewHymne);
+            tv_Drapeau = (TextView) layoutItem.findViewById(R.id.textViewDrapeau);
+
+            imgViewDrapeau = (ImageView) layoutItem.findViewById(R.id.imageViewDrapeau);
+            imgViewDrapeau.setImageBitmap(bitmap);
+
+            tv_Hymne.setText(listeHymne.get(position).getParole());
+            tv_Drapeau.setText(listDrapeau.get(position).getDescription());
         }
-        bitmap = BitmapFactory.decodeStream(open);
-
-        tv_Hymne = (TextView)layoutItem.findViewById(R.id.textViewHymne);
-        tv_Drapeau = (TextView)layoutItem.findViewById(R.id.textViewDrapeau);
-
-        imgViewDrapeau = (ImageView)layoutItem.findViewById(R.id.imageViewDrapeau);
-        imgViewDrapeau.setImageBitmap(bitmap);
-
-        tv_Hymne.setText(listeHymne.get(position).getParole());
-        tv_Drapeau.setText(listDrapeau.get(position).getDescription());
 
         return layoutItem;
+
     }
 }

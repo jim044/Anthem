@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import jim044.anthem.BO.Drapeau;
 import jim044.anthem.BO.Hymne;
 import jim044.anthem.BO.Pays;
@@ -87,6 +89,29 @@ public class HymneBDD {
 
         //On retourne le livre
         return hymne;
+    }
+
+    public ArrayList<Hymne> listHymnes()
+    {
+        Cursor c = bdd.rawQuery("SELECT th.id, th.parole, th.musique, tp.id, tp.nom FROM " + TABLE_HYMNE + " AS th INNER JOIN table_pays AS tp ON tp.id = th.id_pays;" , null);
+        return cursorToListHymnes(c);
+    }
+
+    private ArrayList<Hymne> cursorToListHymnes(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        ArrayList<Hymne> listHymnes = new ArrayList<Hymne>();
+        if (c.getCount() == 0)
+            return null;
+
+        while(c.moveToNext())   {
+            listHymnes.add(new Hymne(c.getInt(NUM_COL_ID),c.getString(NUM_COL_PAROLE),c.getString(NUM_COL_MUSIQUE), new Pays(c.getInt(3), c.getString(4))));
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le livre
+        return listHymnes;
     }
 
 }

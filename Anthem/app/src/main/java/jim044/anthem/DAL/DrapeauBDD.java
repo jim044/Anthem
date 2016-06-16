@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 import jim044.anthem.BO.Drapeau;
 import jim044.anthem.BO.Pays;
 
@@ -80,6 +82,29 @@ public class DrapeauBDD {
         c.close();
 
         return drapeau;
+    }
+
+    public ArrayList<Drapeau> listDrapeaux()
+    {
+        Cursor c = bdd.rawQuery("SELECT td.id, td.description, tp.id, tp.nom FROM " + TABLE_DRAPEAU + " AS td INNER JOIN table_pays AS tp ON tp.id = td.id_pays;" , null);
+        return cursorToListDrapeaux(c);
+    }
+
+    private ArrayList<Drapeau> cursorToListDrapeaux(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        ArrayList<Drapeau> listDrapeaux = new ArrayList<Drapeau>();
+        if (c.getCount() == 0)
+            return null;
+
+        while(c.moveToNext())   {
+            listDrapeaux.add(new Drapeau(c.getInt(NUM_COL_ID),c.getString(NUM_COL_DESCRIPTION), new Pays(c.getInt(2), c.getString(3))));
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le livre
+        return listDrapeaux;
     }
 
 }

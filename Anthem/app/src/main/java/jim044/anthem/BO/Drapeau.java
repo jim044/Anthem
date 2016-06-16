@@ -9,6 +9,12 @@ public class Drapeau {
     private String description;
     private Pays pays;
 
+    public Drapeau(int id, String description, Pays pays) {
+        this.id = id;
+        this.description = description;
+        this.pays = pays;
+    }
+
     public Drapeau(String description, Pays pays) {
         this.description = description;
         this.pays = pays;

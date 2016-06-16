@@ -16,9 +16,8 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
     private static final String TABLE_DRAPEAU = "table_drapeau";
     private static final String TABLE_HYMNE = "table_hymne";
     private static final String TABLE_PERSONNE = "table_personne";
-    private static final String TABLE_PAYS = "table_personne";
+    private static final String TABLE_PAYS = "table_pays";
     private InputStream is;
-    private Context Context;
 
     private static final String CREATE_TABLE_DRAPEAU = "CREATE TABLE " + TABLE_DRAPEAU + " ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR NOT NULL, id_pays INTEGER NOT NULL);";
@@ -30,6 +29,18 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_PAYS = "CREATE TABLE " + TABLE_PAYS + " ("
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR NOT NULL);";
 
+    private static final String INSERTION_PAYS = "INSERT INTO " + TABLE_PAYS + " (id, nom) VALUES "
+            + "(0, 'AFGANISTAN'), (1, 'ALLEMAGNE'), (2, 'CANADA'), (3, 'CHINE'), (4, 'BELGIQUE'), (5, 'BRESIL'), (6, 'ESPAGNE')"
+            + ", (7, 'ETATS_UNI'), (8, 'FINLANDE'), (9, 'FRANCE')";
+
+    private static final String INSERTION_HYMNE = "INSERT INTO " + TABLE_HYMNE + " (parole, musique, id_pays) VALUES "
+            + "('test', 'test', 0), ('test', 'test', 1), ('test', 'test', 2), ('test', 'test', 3),('test', 'test', 4), ('test', 'test', 5), ('test', 'test', 6)"
+            + ", ('test', 'test', 7), ('test', 'test', 8), ('test', 'test', 9)";
+
+    private static final String INSERTION_DRAPEAU = "INSERT INTO " + TABLE_DRAPEAU + " (description, id_pays) VALUES "
+            + "('AFGANISTAN', 0), ('ALLEMAGNE', 1), ('CANADA', 2), ('CHINE', 3), ('BELGIQUE', 4), ('BRESIL', 5), ('ESPAGNE', 6)"
+            + ", ('ETATS_UNI', 7), ('FINLANDE', 8), ('FRANCE', 9)";
+
     public DataBaseAnthem(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -37,21 +48,13 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //try {
-        //    is = Context.getResources().getAssets().open("anthem.sql");
-         //   String[] statements = FileHelper.parseSqlFile(is);
-
-//            for (String statement : statements) {
-  //              db.execSQL(statement);   //execution des requêtes
-    //        }
-      //  } catch (IOException e) {
-        //    e.printStackTrace();
-         //   Log.i("BDD", "Création ou connexion fichié échouée");
-        //}
         db.execSQL(CREATE_TABLE_DRAPEAU);
         db.execSQL(CREATE_TABLE_HYMNE);
         db.execSQL(CREATE_TABLE_PERSONNE);
         db.execSQL(CREATE_TABLE_PAYS);
+        db.execSQL(INSERTION_PAYS);
+        db.execSQL(INSERTION_HYMNE);
+        db.execSQL(INSERTION_DRAPEAU);
     }
 
     @Override

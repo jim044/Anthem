@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         insertionDonnees();
 
+        ArrayList<Pays> listPays = paysBDD.listPays();
         ListView listViewHymne = (ListView) findViewById(R.id.listViewHymne);
 
         //Récupération de la liste des personnes
-        ArrayList<Hymne> listHymne = new ArrayList<Hymne>();
+        ArrayList<Hymne> listHymne = hymneBDD.listHymnes();
         listHymne.add(unHymne);
 
-        ArrayList<Drapeau> listDrapeau = new ArrayList<Drapeau>();
+        ArrayList<Drapeau> listDrapeau = drapeauBDD.listDrapeaux();
         listDrapeau.add(unDrapeau);
 
         //Création et initialisation de l'Adapter pour les personnes
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void insertionDonnees()
     {
-
         hymneBDD = new HymneBDD(this);
         drapeauBDD = new DrapeauBDD(this);
         paysBDD = new PaysBDD(this);
@@ -66,19 +66,6 @@ public class MainActivity extends AppCompatActivity {
         drapeauBDD.open();
         hymneBDD.open();
         paysBDD.open();
-
-        unPays = new Pays(1, "FRANCE");
-        unHymne = new Hymne("Test","Test", unPays);
-        unDrapeau = new Drapeau("JAUNE BLEU ORANGE",unPays);
-
-        drapeauBDD.insertDrapeau(unDrapeau);
-        hymneBDD.insertHymne(unHymne);
-        paysBDD.insertPays(unPays);
-
-
-
-
-
     }
 
 }

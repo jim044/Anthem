@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jim044.anthem.BO.Hymne;
 import jim044.anthem.BO.Pays;
 
@@ -59,6 +62,12 @@ public class PaysBDD {
         return cursorToPays(c);
     }
 
+    public ArrayList<Pays> listPays()
+    {
+        Cursor c = bdd.rawQuery("SELECT id, nom FROM " + TABLE_PAYS, null);
+        return cursorToListPays(c);
+    }
+
     //Cette méthode permet de convertir un cursor en un livre
     private Pays cursorToPays(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
@@ -77,5 +86,22 @@ public class PaysBDD {
 
         //On retourne le livre
         return pays;
+    }
+
+    private ArrayList<Pays> cursorToListPays(Cursor c){
+        //si aucun élément n'a été retourné dans la requête, on renvoie null
+        ArrayList<Pays> listPays = new ArrayList<Pays>();
+        if (c.getCount() == 0)
+            return null;
+
+        while(c.moveToNext())   {
+            listPays.add(new Pays(c.getInt(NUM_COL_ID),c.getString(NUM_COL_NOM)));
+        }
+
+        //On ferme le cursor
+        c.close();
+
+        //On retourne le livre
+        return listPays;
     }
 }
