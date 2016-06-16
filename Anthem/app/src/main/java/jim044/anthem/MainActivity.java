@@ -23,12 +23,13 @@ import jim044.anthem.DAL.PaysBDD;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Pays unPays;
-    private Hymne unHymne;
     private HymneBDD hymneBDD;
     private DrapeauBDD drapeauBDD;
     private PaysBDD paysBDD;
-    private Drapeau unDrapeau;
+    private ArrayList<Pays> listPays;
+    private ListView listViewHymne;
+    private ArrayList<Hymne> listHymne;
+    private ArrayList<Drapeau> listDrapeau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +37,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         insertionDonnees();
+        listPays = new ArrayList<Pays>();
+        listPays = null;
+        listPays = paysBDD.listPays();
 
-        ArrayList<Pays> listPays = paysBDD.listPays();
-        ListView listViewHymne = (ListView) findViewById(R.id.listViewHymne);
+        listHymne = new ArrayList<Hymne>();
+        listHymne = null;
+        listHymne = hymneBDD.listHymnes();
 
-        //Récupération de la liste des personnes
-        ArrayList<Hymne> listHymne = hymneBDD.listHymnes();
-        listHymne.add(unHymne);
+        listDrapeau = new ArrayList<Drapeau>();
+        listDrapeau = null;
+        listDrapeau = drapeauBDD.listDrapeaux();
 
-        ArrayList<Drapeau> listDrapeau = drapeauBDD.listDrapeaux();
-        listDrapeau.add(unDrapeau);
-
-        //Création et initialisation de l'Adapter pour les personnes
         Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
 
-        //Récupération du composant ListView
         ListView listHymneBis = (ListView)findViewById(R.id.listViewHymne);
 
-        //Initialisation de la liste avec les données
         listHymneBis.setAdapter(adapter);
     }
 

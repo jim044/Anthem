@@ -1,1 +1,0 @@
-"INSERT INTO table_drapeau VALUES (1, "FRANCE");"
