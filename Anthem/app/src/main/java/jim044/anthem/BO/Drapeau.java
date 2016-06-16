@@ -7,12 +7,10 @@ public class Drapeau {
 
     private int id;
     private String description;
-    private String url;
     private Pays pays;
 
-    public Drapeau(String description, String url, Pays pays) {
+    public Drapeau(String description, Pays pays) {
         this.description = description;
-        this.url = url;
         this.pays = pays;
     }
 
@@ -24,27 +22,13 @@ public class Drapeau {
         this.pays = pays;
     }
 
-    public Drapeau(String description, String url) {
+    public Drapeau(String description) {
         this.description = description;
-        this.url = url;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public Drapeau(int id, String description)
     {
         this.id = id;
-        this.description = description;
-    }
-
-    public Drapeau(String description)
-    {
         this.description = description;
     }
 

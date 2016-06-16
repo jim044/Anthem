@@ -22,12 +22,10 @@ public class HymneBDD {
     private static final int NUM_COL_ID = 0;
     private static final String COL_PAROLE = "parole";
     private static final int NUM_COL_PAROLE = 1;
-    private static final String COL_URL = "url";
-    private static final int NUM_COL_URL = 2;
     private static final String COL_MUSIQUE = "musique";
-    private static final int NUM_COL_MUSIQUE = 3;
+    private static final int NUM_COL_MUSIQUE = 2;
     private static final String COL_PAYS = "id_pays";
-    private static final int NUM_COL_PAYS = 4;
+    private static final int NUM_COL_PAYS = 3;
 
     private SQLiteDatabase bdd;
 
@@ -57,7 +55,6 @@ public class HymneBDD {
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_PAROLE, hymne.getParole());
-        values.put(COL_URL, hymne.getUrl());
         values.put(COL_MUSIQUE, hymne.getMusique());
         values.put(COL_PAYS, hymne.getPays().getId());
         //on insère l'objet dans la BDD via le ContentValues
@@ -66,7 +63,7 @@ public class HymneBDD {
 
     public Hymne getHymne(){
         //Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE,COL_URL, COL_MUSIQUE, COL_PAYS}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_HYMNE, new String[] {COL_ID, COL_PAROLE, COL_MUSIQUE, COL_PAYS}, null, null, null, null, null);
         return cursorToHymne(c);
     }
 
@@ -83,7 +80,6 @@ public class HymneBDD {
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         hymne.setId(c.getInt(NUM_COL_ID));
         hymne.setParole(c.getString(NUM_COL_PAROLE));
-        hymne.setUrl(c.getString(NUM_COL_URL));
         hymne.setMusique(c.getString(NUM_COL_MUSIQUE));
         hymne.setPays(new Pays(c.getInt(NUM_COL_PAYS)));
         //On ferme le cursor

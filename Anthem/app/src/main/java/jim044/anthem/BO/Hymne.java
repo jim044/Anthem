@@ -7,13 +7,11 @@ public class Hymne {
 
     private int id;
     private String parole;
-    private String url;
     private String musique;
     private Pays pays;
 
-    public Hymne(String parole, String url, String musique, Pays pays) {
+    public Hymne(String parole, String musique, Pays pays) {
         this.parole = parole;
-        this.url = url;
         this.musique = musique;
         this.pays = pays;
     }
@@ -29,13 +27,11 @@ public class Hymne {
     public Hymne(int id, String parole, String url, String musique) {
         this.id = id;
         this.parole = parole;
-        this.url = url;
         this.musique = musique;
     }
 
     public Hymne(String parole, String url, String musique) {
         this.parole = parole;
-        this.url = url;
         this.musique = musique;
     }
 
@@ -50,13 +46,6 @@ public class Hymne {
 
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
     public int getId() {
         return id;
     }
