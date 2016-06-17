@@ -30,7 +30,7 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
             + "id INTEGER PRIMARY KEY AUTOINCREMENT, nom VARCHAR NOT NULL);";
 
     private static final String INSERTION_PAYS = "INSERT INTO " + TABLE_PAYS + " (id, nom) VALUES "
-            + "(0, 'AFGANISTAN'), (1, 'ALLEMAGNE'), (2, 'CANADA'), (3, 'CHINE'), (4, 'BELGIQUE'), (5, 'BRESIL'), (6, 'ESPAGNE')"
+            + "(0, 'AFGHANISTAN'), (1, 'ALLEMAGNE'), (2, 'CANADA'), (3, 'CHINE'), (4, 'BELGIQUE'), (5, 'BRESIL'), (6, 'ESPAGNE')"
             + ", (7, 'ETATS_UNI'), (8, 'FINLANDE'), (9, 'FRANCE')";
 
     private static final String INSERTION_HYMNE = "INSERT INTO " + TABLE_HYMNE + " (parole, musique, id_pays) VALUES "
@@ -38,7 +38,7 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
             + ", ('test', 'test', 7), ('test', 'test', 8), ('test', 'test', 9)";
 
     private static final String INSERTION_DRAPEAU = "INSERT INTO " + TABLE_DRAPEAU + " (description, id_pays) VALUES "
-            + "('AFGANISTAN', 0), ('ALLEMAGNE', 1), ('CANADA', 2), ('CHINE', 3), ('BELGIQUE', 4), ('BRESIL', 5), ('ESPAGNE', 6)"
+            + "('AFGHANISTAN', 0), ('ALLEMAGNE', 1), ('CANADA', 2), ('CHINE', 3), ('BELGIQUE', 4), ('BRESIL', 5), ('ESPAGNE', 6)"
             + ", ('ETATS_UNI', 7), ('FINLANDE', 8), ('FRANCE', 9)";
 
     public DataBaseAnthem(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

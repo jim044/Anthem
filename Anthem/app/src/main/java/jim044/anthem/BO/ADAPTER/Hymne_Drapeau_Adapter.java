@@ -5,22 +5,16 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.support.annotation.NonNull;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -43,6 +37,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private MediaPlayer player;
     private int lengtMusic;
+    private String test;
 
     public Hymne_Drapeau_Adapter(Context mContext, List<Hymne> listeHymne, List<Drapeau> listeDrapeau) {
         this.listeHymne = listeHymne;
@@ -100,7 +95,15 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         tv_Drapeau = (TextView) layoutItem.findViewById(R.id.textViewDrapeau);
 
         imgViewPlay = (ImageView) layoutItem.findViewById(R.id.imageViewPlay);
-        imgViewPlay.setImageResource(R.drawable.play);
+
+        if(test == listeHymne.get(position).getPays().getNom())
+        {
+            imgViewPlay.setImageResource(R.drawable.pause);
+        }
+        else
+        {
+            imgViewPlay.setImageResource(R.drawable.play);
+        }
 
         imgViewPlay.setOnClickListener(new View.OnClickListener()
         {
@@ -155,9 +158,11 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
                     player.seekTo(lengtMusic);
                     player.start();
 
+                    test = listeHymne.get(position).getPays().getNom();
                     imgViewPlay.setTag(listeHymne.get(position).getPays().getNom());
 
                     imgViewPlay.setImageResource(R.drawable.pause);
+                    Hymne_Drapeau_Adapter.this.notifyDataSetChanged();
                 }
             }
         });
