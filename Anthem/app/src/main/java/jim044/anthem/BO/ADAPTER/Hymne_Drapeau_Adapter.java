@@ -5,7 +5,10 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -186,7 +189,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         });
         imgViewDrapeau = (ImageView) layoutItem.findViewById(R.id.imageViewDrapeau);
         imgViewDrapeau.setImageBitmap(bitmap);
-
+        
         tv_Drapeau.setText(listDrapeau.get(position).getDescription());
 
 
