@@ -99,7 +99,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
 
         imgViewPlay = (ImageView) layoutItem.findViewById(R.id.imageViewPlay);
 
-        if(test == listeHymne.get(position).getPays().getNom())
+        if(test == listeHymne.get(position).getPays().getNom() && imgViewPlay.getDrawable().equals(R.drawable.pause))
         {
             imgViewPlay.setImageResource(R.drawable.pause);
         }
