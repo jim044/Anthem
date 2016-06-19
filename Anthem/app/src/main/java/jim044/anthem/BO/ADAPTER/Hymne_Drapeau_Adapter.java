@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private MediaPlayer player;
     private int lengtMusic;
-    private String test;
+    private String musiqueHymne;
 
     public Hymne_Drapeau_Adapter(Context mContext, List<Hymne> listeHymne, List<Drapeau> listeDrapeau) {
         this.listeHymne = listeHymne;
@@ -99,7 +100,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
 
         imgViewPlay = (ImageView) layoutItem.findViewById(R.id.imageViewPlay);
 
-        if(test == listeHymne.get(position).getPays().getNom() && imgViewPlay.getDrawable().equals(R.drawable.pause))
+        if(musiqueHymne == listeHymne.get(position).getPays().getNom())
         {
             imgViewPlay.setImageResource(R.drawable.pause);
         }
@@ -111,20 +112,11 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         imgViewPlay.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v) {
-
-
-                if (imgViewPlay.getTag() != listeHymne.get(position).getPays().getNom() && player != null)
-                {
-                    if (player.isPlaying()) {
-                        lengtMusic = 0;
-                        player.stop();
-                    }
-                }
-
                 if(imgViewPlay.getTag() == listeHymne.get(position).getPays().getNom())
                 {
                     imgViewPlay.setImageResource(R.drawable.play);
                     imgViewPlay.setTag("play");
+                    musiqueHymne = "";
                     player.pause();
                     lengtMusic = player.getCurrentPosition();
                 }
@@ -132,6 +124,13 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
                     if(imgViewPlay.getTag() != "play" && listeHymne.get(position).getPays().getNom() != imgViewPlay.getTag())
                     {
                         lengtMusic = 0;
+
+                        if(musiqueHymne == null) {
+                            player = new MediaPlayer();
+                        }
+                        if (player.isPlaying()) {
+                            player.stop();
+                        }
                     }
                     AssetFileDescriptor descriptor = null;
                     try {
@@ -161,7 +160,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
                     player.seekTo(lengtMusic);
                     player.start();
 
-                    test = listeHymne.get(position).getPays().getNom();
+                    musiqueHymne = listeHymne.get(position).getPays().getNom();
                     imgViewPlay.setTag(listeHymne.get(position).getPays().getNom());
 
                     imgViewPlay.setImageResource(R.drawable.pause);
@@ -177,7 +176,7 @@ public class Hymne_Drapeau_Adapter extends BaseAdapter {
         {
             public void onClick(View v) {
 
-                if (player != null)
+                if (player != null && musiqueHymne == listeHymne.get(position).getPays().getNom())
                 {
                     if (player.isPlaying()) {
                         imgViewPlay.setImageResource(R.drawable.play);
