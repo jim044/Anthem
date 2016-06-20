@@ -33,18 +33,21 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
             + "(0, 'AFGHANISTAN'), (1, 'AFRIQUE_DU_SUD'), (2, 'ALBANIE'), (3, 'ALGERIE'), (4, 'ALLEMAGNE'), (5, 'ANDORRE'), (6, 'ANGOLA')"
             + ", (7, 'ARABIE_SAOUDITE'), (8, 'ARGENTINE'), (9, 'AUSTRALIE'), (10, 'AUTRICHE'), (11, 'AZERBAIDJAN'), (12, 'BELGIQUE'), (13, 'BIELORUSSIE')"
             + " , (14, 'BRESIL'), (15, 'CAMBODGE'), (16, 'CAMEROUN'), (17, 'CANADA'), (18, 'CHILI'), (19, 'CHINE'), (20, 'COLOMBIE'), (21, 'COREE_DU_NORD')"
-            + ", (22, 'COREE_DU_SUD')";
+            + ", (22, 'COREE_DU_SUD'), (23, 'COSTA_RICA'), (24, 'CROATIE'), (25, 'DANEMARK'), (26, 'EGYPTE'), (27, 'EMIRATS_ARABES_UNIS'), (28, 'EQUATEUR')"
+            + ", (29, 'ESPAGNE'), (30, 'ESTONIE'), (31, 'ETATS_UNIS'), (32, 'FINLANDE'), (33, 'FRANCE'), (34, 'GEORGIE'), (35, 'GRECE');";
     private static final String INSERTION_HYMNE = "INSERT INTO " + TABLE_HYMNE + " (parole, musique, id_pays) VALUES "
             + "('test', 'test', 0), ('test', 'test', 1), ('test', 'test', 2), ('test', 'test', 3),('test', 'test', 4), ('test', 'test', 5), ('test', 'test', 6)"
             + ", ('test', 'test', 7), ('test', 'test', 8), ('test', 'test', 9), ('test', 'test', 10), ('test', 'test', 11), ('test', 'test', 12), ('test', 'test', 13)"
             + ", ('test', 'test', 14), ('test', 'test', 15), ('test', 'test', 16), ('test', 'test', 17), ('test', 'test', 18), ('test', 'test', 19), ('test', 'test', 20),"
-            + "('test', 'test', 21), ('test', 'test', 22)";
+            + "('test', 'test', 21), ('test', 'test', 22), ('test', 'test', 23), ('test', 'test',24), ('test', 'test',25), ('test', 'test',26), ('test', 'test',27), ('test', 'test',28)"
+            + ", ('test', 'test',29), ('test', 'test',30), ('test', 'test',31), ('test', 'test',32), ('test', 'test',33), ('test', 'test',34), ('test', 'test',35);";
 
     private static final String INSERTION_DRAPEAU = "INSERT INTO " + TABLE_DRAPEAU + " (description, id_pays) VALUES "
             + "('AFGHANISTAN',0 ), ('AFRIQUE DU SUD',1), ('ALBANIE',2), ('ALGERIE',3), ('ALLEMAGNE',4), ('ANDORRE',5), ('ANGOLA',6)"
             + ", ('ARABIE SAOUDITE',7), ('ARGENTINE',8), ('AUSTRALIE',9), ('AUTRICHE',10), ('AZERBAIDJAN',11), ('BELGIQUE',12), ('BIELORUSSIE',13)"
             + " , ('BRESIL',14), ('CAMBODGE',15), ('CAMEROUN',16), ('CANADA',17), ('CHILI',18), ('CHINE',19), ('COLOMBIE',20), ('COREE DU NORD',21)"
-            + ", ('COREE DU SUD',22)";
+            + ", ('COREE DU SUD',22), ('COSTA RICA', 23), ('CROATIE',24), ('DANEMARK',25), ('EGYPTE',26), ('EMIRATS ARABES UNIS', 27), ('EQUATEUR', 28)"
+            + ", ('ESPAGNE',29), ('ESTONIE',30), ('ETATS UNIS',31), ('FINLANDE',32), ('FRANCE',33), ('GEORGIE',34), ('GRECE',35);";
     public DataBaseAnthem(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

@@ -1,11 +1,12 @@
 package jim044.anthem;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import jim044.anthem.DAL.DrapeauBDD;
 import jim044.anthem.DAL.HymneBDD;
 import jim044.anthem.DAL.PaysBDD;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private HymneBDD hymneBDD;
     private DrapeauBDD drapeauBDD;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         insertionDonnees();
