@@ -41,10 +41,10 @@ public class DataBaseAnthem extends SQLiteOpenHelper {
             + "('test', 'test', 21), ('test', 'test', 22)";
 
     private static final String INSERTION_DRAPEAU = "INSERT INTO " + TABLE_DRAPEAU + " (description, id_pays) VALUES "
-            + "('AFGHANISTAN',0 ), ('AFRIQUE_DU_SUD',1), ('ALBANIE',2), ('ALGERIE',3), ('ALLEMAGNE',4), ('ANDORRE',5), ('ANGOLA',6)"
-            + ", ('ARABIE_SAOUDITE',7), ('ARGENTINE',8), ('AUSTRALIE',9), ('AUTRICHE',10), ('AZERBAIDJAN',11), ('BELGIQUE',12), ('BIELORUSSIE',13)"
-            + " , ('BRESIL',14), ('CAMBODGE',15), ('CAMEROUN',16), ('CANADA',17), ('CHILI',18), ('CHINE',19), ('COLOMBIE',20), ('COREE_DU_NORD',21)"
-            + ", ('COREE_DU_SUD',22)";
+            + "('AFGHANISTAN',0 ), ('AFRIQUE DU SUD',1), ('ALBANIE',2), ('ALGERIE',3), ('ALLEMAGNE',4), ('ANDORRE',5), ('ANGOLA',6)"
+            + ", ('ARABIE SAOUDITE',7), ('ARGENTINE',8), ('AUSTRALIE',9), ('AUTRICHE',10), ('AZERBAIDJAN',11), ('BELGIQUE',12), ('BIELORUSSIE',13)"
+            + " , ('BRESIL',14), ('CAMBODGE',15), ('CAMEROUN',16), ('CANADA',17), ('CHILI',18), ('CHINE',19), ('COLOMBIE',20), ('COREE DU NORD',21)"
+            + ", ('COREE DU SUD',22)";
     public DataBaseAnthem(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
