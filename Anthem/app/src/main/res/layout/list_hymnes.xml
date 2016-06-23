@@ -19,8 +19,8 @@
             android:layout_centerHorizontal="true" />
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_height="100dp"
+            android:layout_width="220dp"
+            android:layout_height="160dp"
             android:id="@+id/imageViewDrapeau"
             android:layout_below="@+id/textViewDrapeau"
             android:layout_centerHorizontal="true" />
@@ -30,9 +30,9 @@
             android:layout_height="50dp"
             android:id="@+id/imageViewPlay"
             android:clickable="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="80dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
@@ -41,9 +41,9 @@
             android:layout_height="50dp"
             android:id="@+id/imageViewStop"
             android:clickable="true"
-            android:layout_marginRight="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="80dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
