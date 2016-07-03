@@ -9,14 +9,31 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jim044.anthem.MainActivity">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listViewHymne"
-        android:layout_alignParentTop="true"
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:listSelector="@android:color/transparent"
-        android:dividerHeight="20.0sp"
-        android:divider="#00000000"/>
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextSearch"
+            android:hint="Search"
+            android:layout_row="2"
+            android:layout_column="0" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="427dp"
+            android:id="@+id/listViewHymne"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:listSelector="@android:color/transparent"
+            android:dividerHeight="20.0sp"
+            android:divider="#00000000"
+            android:layout_row="5"
+            android:layout_column="0" />
+    </GridLayout>
 </RelativeLayout>
