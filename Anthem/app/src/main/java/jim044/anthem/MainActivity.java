@@ -61,10 +61,10 @@ public class MainActivity extends Activity {
 
         listHymneBis.setAdapter(adapter);
 
+        editTextSearch = (EditText) findViewById(R.id.editTextSearch);
         editTextSearch.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.equals("") )
                 {
 
