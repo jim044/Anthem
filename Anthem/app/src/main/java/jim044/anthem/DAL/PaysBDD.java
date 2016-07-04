@@ -68,6 +68,12 @@ public class PaysBDD {
         return cursorToListPays(c);
     }
 
+    public ArrayList<Pays> listPaysByNomPays(String nomPays)
+    {
+        Cursor c = bdd.rawQuery("SELECT id, nom FROM " + TABLE_PAYS + " WHERE nom LIKE '" + nomPays + "*';", null);
+        return cursorToListPays(c);
+    }
+
     //Cette méthode permet de convertir un cursor en un livre
     private Pays cursorToPays(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null

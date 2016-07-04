@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
     private PaysBDD paysBDD;
     private ArrayList<Pays> listPays;
     private ListView listViewHymne;
+    private ListView listHymneBis;
     private ArrayList<Hymne> listHymne;
     private ArrayList<Drapeau> listDrapeau;
     private EditText editTextSearch;
@@ -55,19 +56,16 @@ public class MainActivity extends Activity {
         listDrapeau = null;
         listDrapeau = drapeauBDD.listDrapeaux();
 
-        Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
-
-        ListView listHymneBis = (ListView)findViewById(R.id.listViewHymne);
-
-        listHymneBis.setAdapter(adapter);
-
         editTextSearch = (EditText) findViewById(R.id.editTextSearch);
         editTextSearch.addTextChangedListener(new TextWatcher() {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.equals("") )
                 {
-
+                    listPays = paysBDD.listPaysByNomPays(s.toString());
+                    listHymne = hymneBDD.listHymnesByNomPays(s.toString());
+                    listDrapeau = drapeauBDD.listDrapeauxByNomPays(s.toString());
+                    adapter();
                 }
 
             }
@@ -82,6 +80,8 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        adapter();
     }
 
     public void insertionDonnees()
@@ -94,5 +94,15 @@ public class MainActivity extends Activity {
         hymneBDD.open();
         paysBDD.open();
     }
+
+    public void adapter()
+    {
+        Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
+
+        listHymneBis = (ListView)findViewById(R.id.listViewHymne);
+
+        listHymneBis.setAdapter(adapter);
+    }
+
 
 }

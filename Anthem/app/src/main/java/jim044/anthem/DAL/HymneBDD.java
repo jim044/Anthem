@@ -97,6 +97,12 @@ public class HymneBDD {
         return cursorToListHymnes(c);
     }
 
+    public ArrayList<Hymne> listHymnesByNomPays(String nomPays)
+    {
+        Cursor c = bdd.rawQuery("SELECT th.id, th.parole, th.musique, tp.id, tp.nom FROM " + TABLE_HYMNE + " AS th INNER JOIN table_pays AS tp ON tp.id = th.id_pays WHERE tp.nom LIKE '" + nomPays + "*';" , null);
+        return cursorToListHymnes(c);
+    }
+
     private ArrayList<Hymne> cursorToListHymnes(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         ArrayList<Hymne> listHymnes = new ArrayList<Hymne>();
