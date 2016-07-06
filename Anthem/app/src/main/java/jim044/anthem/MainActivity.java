@@ -74,7 +74,6 @@ public class MainActivity extends Activity {
             public void afterTextChanged(Editable s) {
 
             }
-
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
 
@@ -97,11 +96,14 @@ public class MainActivity extends Activity {
 
     public void adapter()
     {
-        Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
+        if(listHymne != null)
+        {
+            Hymne_Drapeau_Adapter adapter = new Hymne_Drapeau_Adapter(this, listHymne, listDrapeau);
 
-        listHymneBis = (ListView)findViewById(R.id.listViewHymne);
+            listHymneBis = (ListView) findViewById(R.id.listViewHymne);
 
-        listHymneBis.setAdapter(adapter);
+            listHymneBis.setAdapter(adapter);
+        }
     }
 
 

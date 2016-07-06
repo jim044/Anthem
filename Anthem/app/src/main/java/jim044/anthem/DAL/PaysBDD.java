@@ -70,7 +70,7 @@ public class PaysBDD {
 
     public ArrayList<Pays> listPaysByNomPays(String nomPays)
     {
-        Cursor c = bdd.rawQuery("SELECT id, nom FROM " + TABLE_PAYS + " WHERE nom LIKE '" + nomPays + "*';", null);
+        Cursor c = bdd.rawQuery("SELECT id, nom FROM " + TABLE_PAYS + " WHERE nom LIKE '" + nomPays + "%';", null);
         return cursorToListPays(c);
     }
 

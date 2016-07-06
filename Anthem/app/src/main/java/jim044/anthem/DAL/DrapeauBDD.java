@@ -92,7 +92,7 @@ public class DrapeauBDD {
 
     public ArrayList<Drapeau> listDrapeauxByNomPays(String nomPays)
     {
-        Cursor c = bdd.rawQuery("SELECT td.id, td.description, tp.id, tp.nom FROM " + TABLE_DRAPEAU + " AS td INNER JOIN table_pays AS tp ON tp.id = td.id_pays WHERE tp.nom LIKE '" + nomPays + "*';" , null);
+        Cursor c = bdd.rawQuery("SELECT td.id, td.description, tp.id, tp.nom FROM " + TABLE_DRAPEAU + " AS td INNER JOIN table_pays AS tp ON tp.id = td.id_pays WHERE tp.nom LIKE '" + nomPays + "%';" , null);
         return cursorToListDrapeaux(c);
     }
 

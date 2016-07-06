@@ -99,7 +99,7 @@ public class HymneBDD {
 
     public ArrayList<Hymne> listHymnesByNomPays(String nomPays)
     {
-        Cursor c = bdd.rawQuery("SELECT th.id, th.parole, th.musique, tp.id, tp.nom FROM " + TABLE_HYMNE + " AS th INNER JOIN table_pays AS tp ON tp.id = th.id_pays WHERE tp.nom LIKE '" + nomPays + "*';" , null);
+        Cursor c = bdd.rawQuery("SELECT th.id, th.parole, th.musique, tp.id, tp.nom FROM " + TABLE_HYMNE + " AS th INNER JOIN table_pays AS tp ON tp.id = th.id_pays WHERE tp.nom LIKE '" + nomPays + "%';" , null);
         return cursorToListHymnes(c);
     }
 
